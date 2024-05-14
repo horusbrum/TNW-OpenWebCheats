@@ -1482,17 +1482,14 @@ int	GetExpApply(STRUCT_MOBEXTRA extra, int exp, int attacker, int target)//exp c
 		if (attacker >= 369 && extra.QuestInfo.Arch.Level370 == 0)
 			return 0;
 	}
-	else if (extra.ClassMaster == CELESTIAL && exp > 0)
+	else if ((extra.ClassMaster == CELESTIAL || extra.ClassMaster == CELESTIALCS || extra.ClassMaster == SCELESTIAL) && exp > 0)
 	{
 		if (attacker >= 39 && extra.QuestInfo.Celestial.Lv40 == 0)
 			return 0;
 
 		if (attacker >= 89 && extra.QuestInfo.Celestial.Lv90 == 0)
 			return 0;
-	}
 
-	else if (extra.ClassMaster == CELESTIALCS && exp > 0)
-	{
 		if (attacker >= 239 && extra.QuestInfo.Celestial.Lv240 == 0)
 			return 0;
 

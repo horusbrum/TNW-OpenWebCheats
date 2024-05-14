@@ -8512,17 +8512,74 @@ void Exec_MSG_UseItem(int conn, char* pMsg)
 
 		if (territorio == 0)
 		{
-			SendRecaptcha(conn, 1);
+			for (int z = 0; z < MAX_USER; z++)
+			{
+				if (pUser[z].Mode != USER_PLAY)
+					continue;
+
+				if (!pUser[z].cSock.Sock)
+					continue;
+
+				if (pMob[z].LanNFlag == 1)
+				{
+					if (pUser[z].IP == pUser[conn].IP) {
+						SendClientMessage(conn, "Limite de [01] Conta por IP");
+						return;
+					}
+				}
+			}
+
+			DoTeleport(conn, (3639 + rand() % 5 - 3), (3639 + rand() % 5 - 3));
+			pMob[conn].LanNFlag = 1;
+			pUser[conn].Territorio = 0;
 		}
 
 		else if (territorio == 1)
 		{
-			SendRecaptcha(conn, 2);
+			for (int z = 0; z < MAX_USER; z++)
+			{
+				if (pUser[z].Mode != USER_PLAY)
+					continue;
+
+				if (!pUser[z].cSock.Sock)
+					continue;
+
+				if (pMob[z].LanMFlag == 1)
+				{
+					if (pUser[z].IP == pUser[conn].IP) {
+						SendClientMessage(conn, "Limite de [01] Conta por IP");
+						return;
+					}
+				}
+			}
+
+			DoTeleport(conn, (3782 + rand() % 5 - 3), (3527 + rand() % 5 - 3));
+			pMob[conn].LanMFlag = 1;
+			pUser[conn].Territorio = 0;
 		}
 
 		else
 		{
-			SendRecaptcha(conn, 3);
+			for (int z = 0; z < MAX_USER; z++)
+			{
+				if (pUser[z].Mode != USER_PLAY)
+					continue;
+
+				if (!pUser[z].cSock.Sock)
+					continue;
+
+				if (pMob[z].LanAFlag == 1)
+				{
+					if (pUser[z].IP == pUser[conn].IP) {
+						SendClientMessage(conn, "Limite de [01] Conta por IP");
+						return;
+					}
+				}
+			}
+
+			DoTeleport(conn, (3911 + rand() % 5 - 3), (3655 + rand() % 5 - 3));
+			pMob[conn].LanAFlag = 1;
+			pUser[conn].Territorio = 0;
 		}
 
 		if (amount > 1)

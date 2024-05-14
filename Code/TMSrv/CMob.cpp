@@ -1829,22 +1829,22 @@ int  CMob::CheckGetLevel()
 	else if (exp > Segment1)
 		CurSeg = 1;
 
-	/*
+	
 	if (extra.ClassMaster == CELESTIAL && (cur == 39 && extra.QuestInfo.Celestial.Lv40 == 0 || cur == 89 && extra.QuestInfo.Celestial.Lv90 == 0 || cur == 239 && extra.QuestInfo.Celestial.Lv240 == 0 ||
 		cur == 279 && extra.QuestInfo.Celestial.Lv280 == 0 || cur == 319 && extra.QuestInfo.Celestial.Lv320 == 0 || cur == 359 && extra.QuestInfo.Celestial.Lv360 == 0))
-		return 0;*/
+		return 0;
 
 	if (extra.ClassMaster == CELESTIAL && (cur == 39 && extra.QuestInfo.Celestial.Lv40 == 0 || cur == 89 && extra.QuestInfo.Celestial.Lv90 == 0))
 		return 0;
 
-	/*
+
 	if (extra.ClassMaster == CELESTIALCS && (cur == 239 && extra.QuestInfo.Celestial.Lv240 == 0 || cur == 279 && extra.QuestInfo.Celestial.Lv280 == 0 ||
 		cur == 319 && extra.QuestInfo.Celestial.Lv320 == 0 || cur == 359 && extra.QuestInfo.Celestial.Lv360 == 0))
 		return 0;
 
 	if (extra.ClassMaster == SCELESTIAL && (cur == 239 && extra.QuestInfo.Celestial.Lv240 == 0 || cur == 279 && extra.QuestInfo.Celestial.Lv280 == 0 ||
 		cur == 319 && extra.QuestInfo.Celestial.Lv320 == 0 || cur == 359 && extra.QuestInfo.Celestial.Lv360 == 0))
-		return 0;*/
+		return 0;
 
 	if (extra.ClassMaster == ARCH && (cur == 354 && extra.QuestInfo.Arch.Level355 == 0 || cur == 369 && extra.QuestInfo.Arch.Level370 == 0))
 		return 0;

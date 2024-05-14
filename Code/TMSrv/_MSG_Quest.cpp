@@ -277,7 +277,34 @@ void Exec_MSG_Quest(int conn, char* pMsg)
 	}return;
 	case EVENTO_HIT:
 	{
-		SendRecaptcha(conn, 4);				
+		if (EventStatus == 0) {
+			SendClientMessage(conn, "Evento Desativado");
+			return;
+		}
+
+		for (int z = 0; z < MAX_USER; z++)
+		{
+			if (pUser[z].Mode != USER_PLAY)
+				continue;
+
+			if (pUser[z].DiariaState == 1)
+			{
+				if (pUser[z].IP == pUser[conn].IP) {
+					SendClientMessage(conn, "Limite de [01] Conta por IP");
+					return;
+				}
+			}
+		}
+		SendMsgExp(conn, "Bem Vindo ao Evento Hit", TNColor::Default, false);
+		int _rand = rand() % 2;
+		if (_rand == 0) {
+			DoTeleport(conn, 1311 + rand() % 2, 1499 + rand() % 2);
+		}
+		else {
+			DoTeleport(conn, 1372 + rand() % 2, 1499 + rand() % 2);
+		}
+		pUser[conn].DiariaState = 1;
+		pUser[conn].Territorio = 0;
 	}return;	
 #pragma region MOUNT_MASTER
 	case MOUNT_MASTER:
